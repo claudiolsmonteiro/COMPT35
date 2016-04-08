@@ -1,0 +1,11 @@
+TABLE=5
+POSITION=1
+LETTER=2
+COLON=3
+WS=7
+MINUS=4
+TABLESEPARATOR=6
+'-'=4
+'|'=6
+':'=3
+'table'=5
