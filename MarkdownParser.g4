@@ -6,6 +6,7 @@ options {
 
 r  : table;
 
+real : DIGIT.DIGIT ;
 //PARSING
 table: (LETTER TABLESEPARATOR)+secondROW(LETTER TABLESEPARATOR)+;
 

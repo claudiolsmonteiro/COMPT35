@@ -33,6 +33,117 @@ TABLESEPARATOR
 	'|'
 ;
 
+CARDINAL
+: 
+	'#'
+;
+
+ASTERISK
+: 
+	'*'
+;
+
+UNDERSCORE
+: 
+	'_'
+;
+
+HYFEN
+: 
+	'-'
+;
+
+EQUAL
+: 
+	'='
+;
+
+TILDES
+: 
+	'~'
+;
+
+
+DOT
+: 
+	'.' 
+;
+
+
+EXCLAMATIONMARK
+: 
+	'!'
+;
+
+QUESTIONMARK
+: 
+	'?'
+;
+
+SEMICOLON
+: 
+	';'
+;
+
+
+SLASH
+: 
+	'/'
+;
+
+//BACKSLASH
+//: '\'
+//;
+// faz o lexer dar erro
+
+
+PLUS
+: 
+	'+'
+;
+
+ACCENT
+: 
+	'`' 
+	| '´'
+;
+
+DIGIT
+: 
+	[0..9]+
+;
+
+
+OPEN_PARENTHISIS 
+: 
+	'(' 
+;
+
+OPEN_BRACKET
+: 
+	'[' 
+;
+
+OPEN_CURLY
+: 
+	'{' 
+; 
+
+CLOSE_PARENTHISIS 
+: 
+	')' 
+;
+
+CLOSE_BRACKET
+: 
+	']' 
+;
+
+CLOSE_CURLY
+: 
+	'}' 
+;
+
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
  
               
