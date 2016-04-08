@@ -110,7 +110,7 @@ ACCENT
 
 DIGIT
 : 
-	[0..9]+
+	[0-9]+
 ;
 
 
@@ -144,6 +144,11 @@ CLOSE_CURLY
 	'}' 
 ;
 
+NEWLINE
+: 
+	'\n'
+;
+	
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
  
               

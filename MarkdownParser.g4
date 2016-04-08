@@ -4,10 +4,13 @@ options {
 	tokenVocab = MarkdownLexer;
 }
 
-r  : table;
+r  : table | title | real;
 
-real : DIGIT.DIGIT ;
+// teste
+real : DIGIT.DIGIT;
 //PARSING
+
+title : (CARDINAL+ LETTER )(NEWLINE (EQUAL+ | MINUS+))*;
 table: (LETTER TABLESEPARATOR)+secondROW(LETTER TABLESEPARATOR)+;
 
 secondROW: (COLON? MINUS+ COLON TABLESEPARATOR);
