@@ -146,7 +146,7 @@ CLOSE_CURLY
 
 NEWLINE
 : 
-	'\n'
+	'\r'? '\n'
 ;
 	
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
