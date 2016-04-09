@@ -4,13 +4,25 @@ options {
 	tokenVocab = MarkdownLexer;
 }
 
-r  : table | title | real;
+r  : table | title | image ;
 
 // teste
+word : LETTER+;
 real : DIGIT.DIGIT;
+emphasys : italic | bold;
+italic : ASTERISK;
+bold : UNDERSCORE;
 //PARSING
 
-title : (CARDINAL+ LETTER )(NEWLINE (EQUAL+ | MINUS+))*;
-table: (LETTER TABLESEPARATOR)+secondROW(LETTER TABLESEPARATOR)+;
+title : (CARDINAL+ emphasys* word emphasys*)(NEWLINE (EQUAL+ | MINUS+))*;
 
+
+
+image: EXCLAMATIONMARK OPEN_BRACKET word CLOSE_BRACKET OPEN_PARENTHISIS location CLOSE_PARENTHISIS;
+location : (SLASH loc+)+ DOT word;
+loc : word | DIGIT | DOT | HYFEN | UNDERSCORE;
+
+
+
+table: (word TABLESEPARATOR)+secondROW(word TABLESEPARATOR)+;
 secondROW: (COLON? MINUS+ COLON TABLESEPARATOR);

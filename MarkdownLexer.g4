@@ -10,7 +10,7 @@ POSITION
 // match lower-case identifiers
 LETTER
 :
-	[a-zA-Z]+
+	[a-zA-Z]
 ;
 
 COLON
