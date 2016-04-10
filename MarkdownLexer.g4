@@ -1,11 +1,11 @@
 lexer grammar MarkdownLexer;
 
 
-SIMPLETEXT //Match any text without markdown sintax
+SIMPLETEXT //Match any text without markdown syntax
 :
 	(
-		~('\\'|'`'|'*'|'_'|'['|']'|'('|')'|'#'|'+'|'-'|'.'|'!')+ 
-		| (BACKSLASH (
+		~('\\'|'`'|'*'|'_'|'['|']'|'('|')'|'#'|'+'|'-'|'.'|'!')+ //match text
+		| (BACKSLASH ( //match escaped markdown chars
 			BACKSLASH 
 			| BACKTICK 
 			| ASTERISK 
@@ -149,6 +149,36 @@ GREATERTHAN
 	'>'
 ;
 
+EQUAL
+: 
+	'='
+;
+
+QUESTIONMARK
+: 
+	'?'
+;
+
+DIGIT
+: 
+	[0-9]+
+;
+
+OPEN_CURLY
+: 
+	'{' 
+;
+
+CLOSE_CURLY
+: 
+	'}' 
+;
+
+NEWLINE
+: 
+	'\r'? '\n'
+;
+	
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
  
               
