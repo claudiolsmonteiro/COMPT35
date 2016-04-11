@@ -1,10 +1,18 @@
 lexer grammar MarkdownLexer;
-
+ 
+DIGIT
+: 
+	[0-9]+
+;
+REAL
+:
+	DIGIT DOT DIGIT
+;
 
 SIMPLETEXT //Match any text without markdown syntax
 :
 	(
-		~('\\'|'`'|'*'|'_'|'['|']'|'('|')'|'#'|'+'|'-'|'.'|'!')+ //match text
+		~('\\'|'`'|'*'|'_'|'['|']'|'('|')'|'#'|'+'|'-'|'.'|'!'|'\n'|'|'|'/')+ //match text
 		| (BACKSLASH ( //match escaped markdown chars
 			BACKSLASH 
 			| BACKTICK 
@@ -38,9 +46,13 @@ STRIKETHROUGH
 	TILDE TILDE (SIMPLETEXT | ITALICS | BOLD) TILDE TILDE
 ;
 
+UNDERLINED 
+: NEWLINE (EQUAL+ | MINUS+)
+;
+
 HEADER
 :
-	HASH+ (SIMPLETEXT | ITALICS | BOLD | STRIKETHROUGH)
+	HASH+ (SIMPLETEXT | ITALICS | BOLD | STRIKETHROUGH | UNDERLINED)*
 ;
 
 //CHARS
@@ -159,10 +171,6 @@ QUESTIONMARK
 	'?'
 ;
 
-DIGIT
-: 
-	[0-9]+
-;
 
 OPEN_CURLY
 : 
