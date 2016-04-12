@@ -1,0 +1,37 @@
+#PERSONAL INFORMATION
+Name José Nuno de Pinho Cardoso
+Date of Birth [27/05/1988]
+Place of Birth | Porto/Portugal
+Nationality | Portuguese
+Citizen Card ID 13216754
+|
+
+#EDUCATION
+#**Ensino basico**
+Ecole francaise de porto [09/1990]|[06/2000] porto
+Escola basica da senhora da hora [09/2000]|[06/2003] matosinhos
+#Ensino basico secundario
+Curso tecnologia de informacao Escola secundaria da senhora da hora (17.5/20)[09/2003]|[06/2006] matosinhos
+#Ensino superior
+MIEIC (16/20)[09/2006]|[06/2011] Porto
+PRODEI [09/2011]|[2016] Porto
+#Online
+Machine Course Stanford University (98.8/100)[08/2013]|[2016] Coursera 
+|
+
+##Experience
+#Vocational
+Project/Implementation Manager | Porto / Portugal
+Laboratorio de gestao de projectos (FEUP/BPI) [02/2010]|[07/2010]
+(17/20)
+Researcher | Porto/Portugal
+Centro de Informatica prof. correira de araujo [2010]|[2011]
+Teaching assistant(Projecto FEUP) | Porto/Portugal
+FEUP [09/2010]|[12/2010]
+Lecturer(Assistente Convidado) | Porto/Portugal
+FEUP [09/2013]|[01/2015]
+Programming I and II
+#Miscellaneous
+Sound, light and video technician | Porto/Portugal
+Unidade de Gestao de eventos [2010]|[2011]
+feupville

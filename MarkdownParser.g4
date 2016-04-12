@@ -16,6 +16,7 @@ r : curriculo;
 
 //date: LBRACKET SIMPLETEXT (SLASH SIMPLETEXT)* RBRACKET ;
 date: LBRACKET DIGIT (SLASH DIGIT)? RBRACKET;
+birth: LBRACKET DIGIT SLASH DIGIT SLASH DIGIT RBRACKET;
 location: SIMPLETEXT (SLASH SIMPLETEXT)?;
 grade: LPAREN (DIGIT | REAL) SLASH DIGIT RPAREN;
 //grade: LPAREN SIMPLETEXT SLASH SIMPLETEXT RPAREN;
@@ -29,9 +30,14 @@ loc : SIMPLETEXT| DOT | MINUS | UNDERSCORE;
 table: (SIMPLETEXT TABLESEPARATOR)+secondROW(SIMPLETEXT TABLESEPARATOR)+;
 secondROW: (COLON? MINUS+ COLON TABLESEPARATOR);
 
-curriculo : experience;
-
 title: HEADER+;
+
+curriculo : info TABLESEPARATOR education TABLESEPARATOR experience;
+
+info: title NEWLINE infocontent;
+nationality: SIMPLETEXT TABLESEPARATOR location;
+infocontent: (SIMPLETEXT NEWLINE SIMPLETEXT birth NEWLINE SIMPLETEXT TABLESEPARATOR location NEWLINE nationality  NEWLINE SIMPLETEXT NEWLINE);
+
 education: title NEWLINE educationcontent;
 educationcontent: (title NEWLINE schoolcontent)*;
 schoolcontent: (SIMPLETEXT grade* date TABLESEPARATOR date location NEWLINE)+;
