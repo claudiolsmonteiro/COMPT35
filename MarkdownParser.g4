@@ -36,7 +36,8 @@ curriculo : info TABLESEPARATOR education TABLESEPARATOR experience;
 
 info: title NEWLINE infocontent;
 nationality: SIMPLETEXT TABLESEPARATOR location;
-infocontent: (SIMPLETEXT NEWLINE SIMPLETEXT birth NEWLINE SIMPLETEXT TABLESEPARATOR location NEWLINE nationality  NEWLINE SIMPLETEXT NEWLINE);
+id: SIMPLETEXT TABLESEPARATOR DIGIT;
+infocontent: (SIMPLETEXT NEWLINE SIMPLETEXT birth NEWLINE SIMPLETEXT TABLESEPARATOR location NEWLINE nationality  NEWLINE id NEWLINE);
 
 education: title NEWLINE educationcontent;
 educationcontent: (title NEWLINE schoolcontent)*;
