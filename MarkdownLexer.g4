@@ -12,7 +12,7 @@ REAL
 SIMPLETEXT //Match any text without markdown syntax
 :
 	(
-		~('\\'|'`'|'*'|'_'|'['|']'|'('|')'|'#'|'+'|'-'|'.'|'!'|'\n'|'|'|'/')+ //match text
+		~('\\'|'`'|'*'|'_'|'['|']'|'('|')'|'#'|'+'|'-'|'.'|'!'|'\n'|'|'|'/'|'>')+ //match text
 		| (BACKSLASH ( //match escaped markdown chars
 			BACKSLASH 
 			| BACKTICK 
