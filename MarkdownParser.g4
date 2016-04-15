@@ -4,48 +4,64 @@ options {
 	tokenVocab = MarkdownLexer;
 }
 
-r : curriculo;
+r : curriculo;                    
+ 
+curriculo : ((block|horizontal) NEWLINE)+;
 
-// teste
+block: HEADER NEWLINE content;
+horizontal: HORIZONTALRULE;
+content: (paragraph|table|list|blockquote|link|image)+;
+paragraph: (TEXT+ NEWLINE)+;
 
-//PARSING
-blockquote: GREATERTHAN SIMPLETEXT NEWLINE SIMPLETEXT;
+table: cell TABLESEPARATOR secondROW NEWLINE cell+;
+cell:TABLESEPARATOR ((TEXT|stars) TABLESEPARATOR)+ NEWLINE;
+secondROW: (COLON? MINUS MINUS MINUS+ COLON? TABLESEPARATOR)+;
+
+image: EXCLAMATIONMARK LBRACKET TEXT RBRACKET LPAREN filelocation RPAREN;
+filelocation : (SLASH loc+)+ DOT TEXT;
+loc : TEXT| DOT | MINUS | UNDERSCORE;
+
+link: LBRACKET TEXT RBRACKET NEWLINE;
+
+list: (orderList|unorderList);
+
+stars: STAR ((FILLEDSTARS EMPTYSTARS?) | EMPTYSTARS);
+
+orderList: (STARTLIST (TEXT | ITALICS | BOLD | STRIKETHROUGH)+ NEWLINE)+;
+
+unorderList: (MINUS (TEXT | ITALICS | BOLD | STRIKETHROUGH)+ NEWLINE)+;
+
+blockquote: GREATERTHAN TEXT NEWLINE;
+
+/*
 
 date: LBRACKET DIGIT (SLASH DIGIT)? RBRACKET;
 birth: LBRACKET DIGIT SLASH DIGIT SLASH DIGIT RBRACKET;
-location: SIMPLETEXT (SLASH SIMPLETEXT)?;
+location: TEXT (SLASH TEXT)?;
 grade: LPAREN (DIGIT | REAL) SLASH DIGIT RPAREN;
 
-image: EXCLAMATIONMARK LBRACKET SIMPLETEXT RBRACKET LPAREN filelocation RPAREN;
-filelocation : (SLASH loc+)+ DOT SIMPLETEXT;
-loc : SIMPLETEXT| DOT | MINUS | UNDERSCORE;
 
-link: LBRACKET SIMPLETEXT RBRACKET;
-
-table: (SIMPLETEXT TABLESEPARATOR)+secondROW(SIMPLETEXT TABLESEPARATOR)+;
-secondROW: (COLON? MINUS+ COLON TABLESEPARATOR);
-
-title: HEADER+;
 
 curriculo : info TABLESEPARATOR education TABLESEPARATOR experience;
 
 info: title NEWLINE infocontent;
-nationality: SIMPLETEXT TABLESEPARATOR location;
-id: SIMPLETEXT TABLESEPARATOR DIGIT;
-infocontent: (SIMPLETEXT NEWLINE SIMPLETEXT birth NEWLINE SIMPLETEXT TABLESEPARATOR location NEWLINE nationality  NEWLINE id NEWLINE);
+nationality: TEXT TABLESEPARATOR location;
+id: TEXT TABLESEPARATOR DIGIT;
+infocontent: (TEXT NEWLINE TEXT birth NEWLINE TEXT TABLESEPARATOR location NEWLINE nationality  NEWLINE id NEWLINE);
 
-education: title NEWLINE educationcontent;
-educationcontent: (title NEWLINE schoolcontent)*;
-schoolcontent: (SIMPLETEXT grade* date TABLESEPARATOR date location NEWLINE)+;
+education: HEADER NEWLINE educationcontent;
+educationcontent: (HEADER NEWLINE schoolcontent)+;
+schoolcontent: (TEXT grade* date TABLESEPARATOR date location NEWLINE)+;
 
 
-role: (SIMPLETEXT 
+role: (TEXT 
 	| LPAREN 
 	| RPAREN 
 	| SLASH 
 	| COMMA
 	| DOT)+;
-//description : SIMPLETEXT;
+	
 experience: HEADER+ NEWLINE experiencetype;
 experiencetype: (HEADER+ NEWLINE experiencecontent)*;
-experiencecontent: ( role TABLESEPARATOR location NEWLINE role date TABLESEPARATOR date NEWLINE (grade* NEWLINE | SIMPLETEXT* NEWLINE)*(blockquote NEWLINE)*)+;
+experiencecontent: ( role TABLESEPARATOR location NEWLINE role date TABLESEPARATOR date NEWLINE (grade* NEWLINE | TEXT NEWLINE)*(blockquote NEWLINE)*)+;
+* */

@@ -1,19 +1,28 @@
 lexer grammar MarkdownLexer;
- 
-DIGIT
-: 
-	[0-9]+
+
+
+TEXT
+:
+		ITALICS | BOLD | STRIKETHROUGH | ([a-zA-Z0-9]+ (' '? ([a-zA-Z0-9]+|ESCAPEDCHARS))*)
 ;
+
+STARTLIST
+:
+		DIGIT DOT
+;
+
 REAL
 :
 	DIGIT DOT DIGIT
 ;
 
-SIMPLETEXT //Match any text without markdown syntax
+DIGIT
+: 
+	[0-9]+
+;
+ESCAPEDCHARS
 :
-	(
-		~('\\'|'`'|'*'|'_'|'['|']'|'('|')'|'#'|'+'|'-'|'.'|'!'|'\n'|'|'|'/'|'>')+ //match text
-		| (BACKSLASH ( //match escaped markdown chars
+	(BACKSLASH ( //match escaped markdown chars
 			BACKSLASH 
 			| BACKTICK 
 			| ASTERISK 
@@ -28,33 +37,59 @@ SIMPLETEXT //Match any text without markdown syntax
 			| DOT
 			| EXCLAMATIONMARK
 		))+
-	)+
 ;
 
 BOLD
 :
-	ASTERISK ASTERISK (SIMPLETEXT | ITALICS | STRIKETHROUGH) ASTERISK ASTERISK
+	ASTERISK ASTERISK (TEXT | ITALICS | STRIKETHROUGH)+ ASTERISK ASTERISK
 ;
 
 ITALICS
 :
-	UNDERSCORE (SIMPLETEXT | BOLD | STRIKETHROUGH) UNDERSCORE
+	UNDERSCORE (TEXT | BOLD | STRIKETHROUGH)+ UNDERSCORE
 ;
 
 STRIKETHROUGH
 :
-	TILDE TILDE (SIMPLETEXT | ITALICS | BOLD) TILDE TILDE
+	TILDE TILDE (TEXT | ITALICS | BOLD)+ TILDE TILDE
 ;
 
-UNDERLINED 
-: NEWLINE (EQUAL+ | MINUS+)
+HORIZONTALRULE 
+: 
+	NEWLINE (EQUAL EQUAL EQUAL+)
 ;
 
 HEADER
 :
-	HASH+ (SIMPLETEXT | ITALICS | BOLD | STRIKETHROUGH | UNDERLINED)*
+	HASH+ (TEXT | ITALICS | BOLD | STRIKETHROUGH)+ 
 ;
 
+
+STAR
+:
+	BACKSLASH 'stars'
+;
+EMPTYSTARS
+:
+	LBRACKET DIGIT RBRACKET
+;
+
+FILLEDSTARS
+:
+	LBRACE DIGIT (DOT '5')? RBRACE
+;
+
+
+
+WORDCLOUD
+:
+	BACKSLASH 'wordcloud'
+;
+
+LISTSTART
+:
+	DIGIT DOT
+;
 //CHARS
 BACKSLASH
 :
@@ -104,6 +139,16 @@ LBRACKET
 RBRACKET
 :
 	']'
+;
+
+LBRACE
+: 
+	'{' 
+;
+
+RBRACE
+: 
+	'}' 
 ;
 
 DOT
@@ -171,22 +216,11 @@ QUESTIONMARK
 	'?'
 ;
 
-
-OPEN_CURLY
-: 
-	'{' 
-;
-
-CLOSE_CURLY
-: 
-	'}' 
-;
-
 NEWLINE
 : 
-	'\r'? '\n'
+	'\r'?'\n'
 ;
 	
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+WS : [' '\t]+ -> skip ; // skip spaces, tabs, newlines
  
               
