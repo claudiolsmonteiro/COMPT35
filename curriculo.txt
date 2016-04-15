@@ -27,6 +27,14 @@ List de Gostos
 - Web
 - SQL
 
+#Awards
+Title award seperator
+_1st place_ || **Logical Inovation Crapware** || || ~~City of Oporto~~
+_1st place_ || **Second Change Coin Toss** || || ~~City of Luck~~
+Title award seperator
+_1st place_ || **Card Master Champion** || ||~~Egypt~~
+_1st place_ || **ESO Magickal DPS** || || ~~Glenumbra~~
+
 #QUOTES
 >Melhor empregado que ja tive
 >Sinceramente fantastico
@@ -34,3 +42,4 @@ List de Gostos
 #LINKS E IMAGENS
 [www\.google\.com]
 ![EstaImagemeUmPato](/C.NOmeuDisco.png)
+
