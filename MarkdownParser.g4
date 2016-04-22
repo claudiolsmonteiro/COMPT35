@@ -3,8 +3,7 @@ parser grammar MarkdownParser;
 options {
 	tokenVocab = MarkdownLexer;
 }
-
-r : curriculo;                    
+                 
  
 curriculo : ((block|horizontal) NEWLINE)+;
 
