@@ -10,11 +10,8 @@ curriculo : ((block|horizontal) NEWLINE)+;
 
 block: HEADER NEWLINE content;
 horizontal: HORIZONTALRULE;
-content: (paragraph|table|list|blockquote|link|image|borderlesstable)+;
+content: (paragraph|table|list|blockquote|link|image)+;
 paragraph: (TEXT+ NEWLINE)+;
-
-borderlesstable:(lesscontent (BORDERLESS_SEPARATOR lesscontent?)* NEWLINE)+;
-lesscontent: TEXT | image;
 
 table: cell TABLESEPARATOR secondROW NEWLINE cell+;
 cell:TABLESEPARATOR ((TEXT|stars) TABLESEPARATOR)+ NEWLINE;
