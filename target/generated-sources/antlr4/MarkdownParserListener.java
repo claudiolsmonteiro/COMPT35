@@ -7,16 +7,6 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface MarkdownParserListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link MarkdownParser#r}.
-	 * @param ctx the parse tree
-	 */
-	void enterR(MarkdownParser.RContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MarkdownParser#r}.
-	 * @param ctx the parse tree
-	 */
-	void exitR(MarkdownParser.RContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link MarkdownParser#curriculo}.
 	 * @param ctx the parse tree
 	 */
@@ -156,6 +146,26 @@ public interface MarkdownParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStars(MarkdownParser.StarsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MarkdownParser#wordcloud}.
+	 * @param ctx the parse tree
+	 */
+	void enterWordcloud(MarkdownParser.WordcloudContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MarkdownParser#wordcloud}.
+	 * @param ctx the parse tree
+	 */
+	void exitWordcloud(MarkdownParser.WordcloudContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MarkdownParser#spaces}.
+	 * @param ctx the parse tree
+	 */
+	void enterSpaces(MarkdownParser.SpacesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MarkdownParser#spaces}.
+	 * @param ctx the parse tree
+	 */
+	void exitSpaces(MarkdownParser.SpacesContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MarkdownParser#orderList}.
 	 * @param ctx the parse tree

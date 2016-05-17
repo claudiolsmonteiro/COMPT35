@@ -16,7 +16,7 @@ Escola superior do MIEIC
 Universidade
 |Disciplina|Professor|Stars|
 |---:|---|:---|
-|LGP|Ana|\stars{5}[6]|
+|LGP|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|There are 4 filled stars.There are 6 empty stars.|
 Excelente Aluno
 
 #List De linguagens
@@ -34,3 +34,6 @@ List de Gostos
 #LINKS E IMAGENS
 [www\.google\.com]
 ![EstaImagemeUmPato](/C.NOmeuDisco.png)
+
+#WORDCLOUD
+![MyWordcloud](/C.wordcloud.png)

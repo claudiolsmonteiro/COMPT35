@@ -15,18 +15,6 @@ public class MarkdownParserBaseListener implements MarkdownParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterR(MarkdownParser.RContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitR(MarkdownParser.RContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterCurriculo(MarkdownParser.CurriculoContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -190,6 +178,30 @@ public class MarkdownParserBaseListener implements MarkdownParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitStars(MarkdownParser.StarsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWordcloud(MarkdownParser.WordcloudContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWordcloud(MarkdownParser.WordcloudContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSpaces(MarkdownParser.SpacesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSpaces(MarkdownParser.SpacesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

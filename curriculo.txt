@@ -16,7 +16,7 @@ Escola superior do MIEIC
 Universidade
 |Disciplina|Professor|Stars|
 |---:|---|:---|
-|LGP|Ana|\stars{5}[6]|
+|LGP|\spaces[5]|\stars{4}[6]|
 Excelente Aluno
 
 #List De linguagens
@@ -27,14 +27,6 @@ List de Gostos
 - Web
 - SQL
 
-#Awards
-Title award seperator
-_1st place_ || **Logical Inovation Crapware** || || ~~City of Oporto~~
-_1st place_ || **Second Change Coin Toss** || || ~~City of Luck~~
-Title award seperator
-_1st place_ || **Card Master Champion** || ||~~Egypt~~
-_1st place_ || **ESO Magickal DPS** || || ~~Glenumbra~~
-
 #QUOTES
 >Melhor empregado que ja tive
 >Sinceramente fantastico
@@ -43,3 +35,5 @@ _1st place_ || **ESO Magickal DPS** || || ~~Glenumbra~~
 [www\.google\.com]
 ![EstaImagemeUmPato](/C.NOmeuDisco.png)
 
+#WORDCLOUD
+\wordcloud
