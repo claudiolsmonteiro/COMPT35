@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -41,12 +43,16 @@ public class Main {
 		walker.walk(translator, tree);
 
 		// create output folder if it does not exist
-		File file = new File("C:\\Users\\david\\OneDrive\\Documentos\\FEUP\\3Ano\\COMP\\MCV\\output\\teste.txt");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Insert path");
+		String path;
+		path = sc.nextLine();
+		File file = new File(path+"\\teste.txt");
 		if (file.getParentFile() != null)
 			file.getParentFile().mkdirs();
 		
 
-		PrintWriter writer = new PrintWriter("C:\\Users\\david\\OneDrive\\Documentos\\FEUP\\3Ano\\COMP\\MCV\\output\\teste.txt", "UTF-8");
+		PrintWriter writer = new PrintWriter(path+"\\teste.txt", "UTF-8");
 		writer.print(translator.rewriter.getText());
 		writer.close();
 	}
