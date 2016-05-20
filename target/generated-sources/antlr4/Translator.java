@@ -5,6 +5,7 @@ public class Translator extends MarkdownParserBaseListener
 {
 	BufferedTokenStream tokens;
 	TokenStreamRewriter rewriter;
+	Wordcloud_aux wc_aux;
 
 	public Translator(BufferedTokenStream tokens)
 	{
@@ -30,11 +31,26 @@ public class Translator extends MarkdownParserBaseListener
 	@Override
 	public void enterWordcloud(MarkdownParser.WordcloudContext ctx)
 	{
+
+
 		System.out.println("start " + ctx.getText());
 		System.out.println("start " + ctx.getStart());
 		System.out.println("stop " + ctx.getStop());
 		
 		//get lib to make wordcloud and put correct link
+
+		/* USE MAVEN
+		final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
+		final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(getInputStream("text/my_text_file.txt"));
+		final Dimension dimension = new Dimension(600, 600);
+		final WordCloud wordCloud = new WordCloud(dimension, CollisionMode.RECTANGLE);
+		wordCloud.setPadding(0);
+		wordCloud.setBackground(new RectangleBackground(dimension));
+		wordCloud.setColorPalette(buildRandomColorPalette(20));
+		wordCloud.setFontScalar(new LinearFontScalar(10, 40));
+		wordCloud.build(wordFrequencies);
+		wordCloud.writeToFile("output/wordcloud_rectangle.png");
+		*/
 		String text = "![MyWordcloud](/C.wordcloud.png)";
 		rewriter.replace(ctx.getStart(), ctx.getStop(), text);
 	}
