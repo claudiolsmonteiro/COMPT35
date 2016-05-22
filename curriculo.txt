@@ -36,4 +36,4 @@ List de Gostos
 ![EstaImagemeUmPato](/C.NOmeuDisco.png)
 
 #WORDCLOUD
-\wordcloud
+\wordcloud Circular [500*500]
