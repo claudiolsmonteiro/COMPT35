@@ -59,14 +59,16 @@ public class Translator extends MarkdownParserBaseListener
 	@Override
 	public void enterWordcloud(MarkdownParser.WordcloudContext ctx)
 	{
-		String type ="",dimension;
+		String type ="",dimension,text="";
 		int dx = 0, dy = 0;
 		System.out.println("start " + ctx.getText());
 		System.out.println("start " + ctx.getStart());
 		System.out.println("stop " + ctx.getStop());
 		try {
-			if(ctx.getText().equals("\\wordcloud"))
+			if(ctx.getText().equals("\\wordcloud")) {
 				simpleRectangleTest();
+				text = "![MyWordcloud](Output/wordcloud.png)";
+			}
 			else {
 				type = ctx.getChild(1).toString();
 				dimension = ctx.getChild(2).toStringTree().toString();
@@ -78,21 +80,19 @@ public class Translator extends MarkdownParserBaseListener
 				System.out.println("dx: "+dx);
 				System.out.println("dy: "+dy);
 				generateWordCloud(type, dx, dy);
-				
+				text = "![MyWordcloud](Output/customwordcloud.png)";
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String text = "![MyWordcloud](Output/wordcloud.png)";
+		
 		rewriter.replace(ctx.getStart(), ctx.getStop(), text);
 	}
     public void simpleRectangleTest() throws IOException {
     	wordcloud_aux = new Wordcloud_aux();
     	
     	final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
-    	//File f = new File("curriculo");
-    	//final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(getInputStream("./curriculo.txt"));
     	final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(wordcloud_aux.remove_chars(wordcloud_aux.readFile("./curriculo.txt")));
     	final Dimension dimension = new Dimension(600, 600);
     	final WordCloud wordCloud = new WordCloud(dimension, CollisionMode.RECTANGLE);
@@ -107,8 +107,6 @@ public class Translator extends MarkdownParserBaseListener
     	wordcloud_aux = new Wordcloud_aux();
     	final WordCloud wordCloud;
     	final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
-    	//File f = new File("curriculo");
-    	//final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(getInputStream("./curriculo.txt"));
     	final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(wordcloud_aux.remove_chars(wordcloud_aux.readFile("./curriculo.txt")));
     	final Dimension dimension = new Dimension(dx, dx);
     	if(type.equals("Circular")) {

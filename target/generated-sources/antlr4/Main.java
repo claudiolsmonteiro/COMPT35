@@ -43,16 +43,18 @@ public class Main {
 		walker.walk(translator, tree);
 
 		// create output folder if it does not exist
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Insert path");
-		String path;
-		path = sc.nextLine();
-		File file = new File(path+"\\teste.txt");
+		//Scanner sc = new Scanner(System.in);
+		//System.out.println("Insert path");
+		//String path;
+		//path = sc.nextLine();
+		//File file = new File(path+"\\teste.txt");
+		File file = new File("Output/\\teste.txt");
 		if (file.getParentFile() != null)
 			file.getParentFile().mkdirs();
 		
 
-		PrintWriter writer = new PrintWriter(path+"\\teste.txt", "UTF-8");
+		//PrintWriter writer = new PrintWriter(path+"\\teste.txt", "UTF-8");
+		PrintWriter writer = new PrintWriter("Output/\\teste.txt", "UTF-8");
 		writer.print(translator.rewriter.getText());
 		writer.close();
 	}
