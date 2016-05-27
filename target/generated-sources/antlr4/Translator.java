@@ -41,6 +41,71 @@ public class Translator extends MarkdownParserBaseListener
 		rewriter = new TokenStreamRewriter(tokens);
 	}
 
+	public boolean test_string(String teste)
+	{
+
+		int string_size = teste.length();
+		if(string_size < 2)
+			return false;
+		switch (teste.charAt(0))
+		{
+			case '*':
+			{
+				if( (teste.charAt(1) != '*') ||
+						(teste.charAt(string_size-1) != '*') ||
+						(teste.charAt(string_size-2) != '*')    )
+					return true;
+				break;
+			}
+			case '~':
+			{
+				if( (teste.charAt(1) != '~') ||
+						(teste.charAt(string_size-1) != '~') ||
+						(teste.charAt(string_size-2) != '~')    )
+					return true;
+				break;
+			}
+			case '_':
+			{
+				if(teste.charAt(string_size-1) != '_')
+					return true;
+				break;
+			}
+			default: break;
+		}
+
+		return false;
+
+	}
+
+	@Override
+	public void enterParagraph(MarkdownParser.ParagraphContext ctx)
+	{
+
+		String teste;
+		boolean error = false;
+		if(ctx.TEXT() != null)
+		{
+
+			int counter = ctx.getChildCount();
+
+			for(int i = 0; i<counter; i++)
+			{
+
+				teste = ctx.getChild(i).getText();
+				error = test_string(teste);
+				if(error)
+				{
+					System.out.println("Atention in iteration " + i);
+					System.out.println("Revise if you want BOLD, ITALIC or STRIKETHROUGH text! " + teste);
+				}
+
+			}
+
+		}
+
+	}
+
 	@Override
 	public void enterStars(MarkdownParser.StarsContext ctx)
 	{
