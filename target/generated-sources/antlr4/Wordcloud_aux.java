@@ -25,23 +25,28 @@ public class Wordcloud_aux {
     public InputStream remove_chars(String text)
     {
         String _final = text;
-
-        _final = _final.replace("#","");
-        _final = _final.replace("=","");
-        _final = _final.replace("\\","");
-        _final = _final.replace("*","");
-        _final = _final.replace("|","");
-        _final = _final.replace("-","");
-        _final = _final.replace(":","");
-        _final = _final.replace("[","");
-        _final = _final.replace("]","");
-        _final = _final.replace("(","");
-        _final = _final.replace(")","");
-        _final = _final.replace("<","");
-        _final = _final.replace(">","");
-        _final = _final.replace("!","");
-        _final = _final.replace("?","");
-        _final = _final.replace(".","");
+        
+        _final = _final.replaceAll("\\b\\w{1,2}\\b\\s?", "");
+        _final = _final.replaceAll("\\d","");
+        _final = _final.replace("#"," ");
+        _final = _final.replace("="," ");
+        _final = _final.replace("\\"," ");
+        _final = _final.replace("*"," ");
+        _final = _final.replace("|"," ");
+        _final = _final.replace("-"," ");
+        _final = _final.replace(":"," ");
+        _final = _final.replace("["," ");
+        _final = _final.replace("]"," ");
+        _final = _final.replace("("," ");
+        _final = _final.replace(")"," ");
+        _final = _final.replace("{"," ");
+        _final = _final.replace("}"," ");
+        _final = _final.replace("<"," ");
+        _final = _final.replace(">"," ");
+        _final = _final.replace("!"," ");
+        _final = _final.replace("?"," ");
+        _final = _final.replace("."," ");
+        
 
         InputStream stream = new ByteArrayInputStream(_final.getBytes(StandardCharsets.UTF_8));
 
