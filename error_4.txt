@@ -1,0 +1,44 @@
+#PERSONAL INFORMATION
+_Name_ Jose Nuno de Pinho Cardoso
+Date of Birth 27\-05\-1988
+Place of Birth Porto\\Portugal
+Nationality **Portuguese**
+Citizen Card ID 13216754
+
+
+=====
+#EDUCATION
+Escola superior do MIEIC
+|Disciplina|Professor|Score|
+|---|---|---|----|
+|ASSO|LFR|a|
+|COMP|Luis RUi|17|
+Universidade
+|Disciplina|Professor|Stars|EROORS|
+|---:|---|:---|
+|LGP|\spaces[5]|\stars{4}[6]|
+Excelente Aluno
+
+#List De linguagens
+1. Java
+2. C
+4. Jade
+List de Gostos
+- Web
+- SQL
+Lista de Likes
+1. bla
+2. bla
+3. bla
+
+#QUOTES
+>Melhor empregado que ja tive
+>Sinceramente fantastico
+
+#LINKS E IMAGENS
+[www\.google\.com]
+![EstaImagemeUmPato](/C.NOmeuDisco.png)
+
+#WORDCLOUD
+\wordcloud Circular 500 500
+

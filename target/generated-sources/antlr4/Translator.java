@@ -1,3 +1,4 @@
+import com.sun.deploy.util.StringUtils;
 import org.antlr.v4.runtime.BufferedTokenStream;
 import org.antlr.v4.runtime.TokenStreamRewriter;
 
@@ -105,6 +106,102 @@ public class Translator extends MarkdownParserBaseListener
 		}
 
 	}
+
+
+
+	public int parseStringColumn(String tableRow)
+	{
+		int counter = 0;
+		for(int i=0; i< tableRow.length(); i++)
+		{
+			if(tableRow.charAt(i) == '|')
+			{
+				counter++;
+			}
+		}
+
+		return counter;
+	}
+
+	@Override
+	public void enterTable(MarkdownParser.TableContext ctx)
+	{
+
+		ArrayList<Integer> rows = new ArrayList<>();
+		int counter = ctx.getChildCount();
+		int size=0;
+		int once = 0;
+		for(int i = 0; i<counter; i++)
+		{
+			if(once == 0) {
+				size = parseStringColumn(ctx.getChild(i).getText());
+				once++;
+			}
+
+			if(parseStringColumn(ctx.getChild(i).getText()) > size)
+			{
+				System.out.println("Wrong size in columns!!");
+				System.exit(3);
+			}
+			if(i == 2 && parseStringColumn(ctx.getChild(i).getText()) >= size)
+			{
+				System.out.println("Wrong size in column |---| separations!");
+				System.exit(3);
+			}
+
+		}
+
+	}
+
+	@Override
+	public void enterOrderList(MarkdownParser.OrderListContext ctx)
+	{
+//		System.out.println("Order List start: " + ctx.getText());
+
+		int counter_check = 1;
+		//char count_check = '1';
+		if(ctx.getText()!=null)
+		{
+			int counter = ctx.getChildCount();
+			for(int i = 0; i<counter; i++)
+			{
+				if(Character.isDigit((ctx.getChild(i).getText()).charAt(0)) == true)
+				{
+					//int k = Character.digit(ctx.getChild(i).getText().charAt(0),10);
+					//System.out.println("WUT WUT  " + k);
+
+					if(Character.digit(ctx.getChild(i).getText().charAt(0),10) == counter_check)
+					{
+						counter_check++;
+					}
+					else
+					{
+
+						System.out.println("Your ordered list(s) structure is wrong! - check(1,2,3,...)");
+						System.exit(2);
+					}
+					/***NAO DA ASSIM MAS EStA QUASE!!***/
+					/*
+					if(Character.digit(ctx.getChild(i).getText().charAt(0), 10) == counter_check) {
+						counter++;
+						System.out.println("Is digit:  " + ctx.getChild(i).getText().charAt(0));
+						counter_check++;
+						//count_check=(char)counter_check;
+					}
+					else
+					{
+						System.out.println("Your order list structure is wrong! - check(1,2,3,...)");
+					}
+					*/
+
+				}
+			}
+
+		}
+
+		return;
+	}
+
 
 	@Override
 	public void enterStars(MarkdownParser.StarsContext ctx)
