@@ -11,6 +11,10 @@ import org.antlr.v4.runtime.TokenStreamRewriter;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
+import club.caliope.udc.DocumentConverter;
+import club.caliope.udc.InputFormat;
+import club.caliope.udc.OutputFormat;
+
 public class Main {
 
 	private static String inputFile;
@@ -49,14 +53,18 @@ public class Main {
 		//String path;
 		//path = sc.nextLine();
 		//File file = new File(path+"\\teste.txt");
-		File file = new File("Output/\\teste.txt");
+		File file = new File("/Output/teste.txt");
 		if (file.getParentFile() != null)
 			file.getParentFile().mkdirs();
 		
 
 		//PrintWriter writer = new PrintWriter(path+"\\teste.txt", "UTF-8");
-		PrintWriter writer = new PrintWriter("Output/\\teste.txt", "UTF-8");
+		PrintWriter writer = new PrintWriter("Output/teste.txt", "UTF-8");
 		writer.print(translator.rewriter.getText());
 		writer.close();
+		
+		new DocumentConverter().fromFile(new File("Output/teste.txt"), InputFormat.MARKDOWN_GITHUB).toFile(new File("Output/output.html"), OutputFormat.HTML5).addOption("-s").convert();
+		new DocumentConverter().fromFile(new File("Output/teste.txt"), InputFormat.MARKDOWN_GITHUB).toFile(new File("Output/output.text"), OutputFormat.LATEX).addOption("-s").convert();
+
 	}
 }

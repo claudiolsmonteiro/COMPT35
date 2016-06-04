@@ -7,7 +7,7 @@ Citizen Card ID 13216754
 
 
 =====
-#EDUCATION
+#EDUCATIONZ
 
 
 
@@ -28,7 +28,8 @@ Citizen Card ID 13216754
 1. Java
 2. C
 3. Jade
-List de Gostos
+
+#Lista de Gostos
 - Web
 - SQL
 

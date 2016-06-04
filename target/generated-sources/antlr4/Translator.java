@@ -12,6 +12,7 @@ import com.kennycason.kumo.nlp.FrequencyAnalyzer;
 import com.kennycason.kumo.palette.ColorPalette;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
@@ -159,8 +160,8 @@ public class Translator extends MarkdownParserBaseListener
 				text += ":star:";
 			}
 		text += " ";
-		if(ctx.WHOLENUMBERSELECTION() != null)
-			text += "There are " + ctx.WHOLENUMBERSELECTION().getText().charAt(1) + " empty stars.";
+		//if(ctx.WHOLENUMBERSELECTION() != null)
+		//	text += "There are " + ctx.WHOLENUMBERSELECTION().getText().charAt(1) + " empty stars.";
 		rewriter.replace(ctx.getStart(), ctx.getStop(), text);
 	}
 	
@@ -234,13 +235,13 @@ public class Translator extends MarkdownParserBaseListener
     	if(type.equals("Circular")) {
         	wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
         	wordCloud.setPadding(0);
-        	wordCloud.setBackground(new RectangleBackground(dimension));
-        	wordCloud.setColorPalette(buildRandomColorPalette(20));
+        	wordCloud.setBackground(new CircleBackground((dx/2)));
+        	wordCloud.setColorPalette(buildRandomColorPalette(10));
     	}
     	else {
     		wordCloud = new WordCloud(dimension, CollisionMode.RECTANGLE);
         	wordCloud.setPadding(2);
-        	wordCloud.setBackground(new CircleBackground(300));
+        	wordCloud.setBackground(new RectangleBackground(dimension));
         	wordCloud.setColorPalette(new ColorPalette(new Color(0x4055F1), new Color(0x408DF1), new Color(0x40AAF1), new Color(0x40C5F1), new Color(0x40D3F1), new Color(0xFFFFFF)));
     	}
     	wordCloud.setFontScalar(new LinearFontScalar(10, 40));
