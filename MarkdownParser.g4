@@ -5,9 +5,9 @@ options {
 }
                  
  
-curriculo : ((block|horizontal|wordcloud) NEWLINE)+;
+curriculo : ((block|horizontal|wordcloud | NEWLINE) NEWLINE)+;
 
-block: HEADER NEWLINE content;
+block: (HEADER+ NEWLINE+)+ content;
 horizontal: HORIZONTALRULE;
 content: (paragraph|table|list|blockquote|link|image|wordcloud)+;
 paragraph: (TEXT+ NEWLINE)+;
@@ -26,7 +26,7 @@ list: (orderList|unorderList);
 
 stars: STAR ((REALNUMBERSELECTION WHOLENUMBERSELECTION?) | WHOLENUMBERSELECTION);
 
-wordcloud: WORDCLOUD TEXT* dimension* TEXT*   ;
+wordcloud: WORDCLOUD TEXT* dimension* TEXT* ;
 
 dimension : LBRACKET TEXT ASTERISK TEXT RBRACKET ;
 
