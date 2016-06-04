@@ -1,4 +1,4 @@
-import com.sun.deploy.util.StringUtils;
+//import com.sun.deploy.util.StringUtils;
 import org.antlr.v4.runtime.BufferedTokenStream;
 import org.antlr.v4.runtime.TokenStreamRewriter;
 
@@ -91,6 +91,7 @@ public class Translator extends MarkdownParserBaseListener
 			int counter = ctx.getChildCount();
 
 			for(int i = 0; i<counter; i++)
+
 			{
 
 				teste = ctx.getChild(i).getText();
@@ -232,17 +233,30 @@ public class Translator extends MarkdownParserBaseListener
 				text = "![MyWordcloud](Output/wordcloud.png)";
 			}
 			else {
-				type = ctx.getChild(1).toString();
-				dimension = ctx.getChild(2).toStringTree().toString();
-				dimension = dimension.substring(ctx.getChild(2).toStringTree().indexOf("]")+1);
-				System.out.println(dimension.substring(dimension.indexOf("[")+1).trim());
-				dx = Integer.parseInt(dimension.substring(dimension.indexOf("[")+1,dimension.indexOf("*")).trim());
-				dy = Integer.parseInt(dimension.substring(dimension.indexOf("*")+1,dimension.indexOf("]")).trim());
-				System.out.println("Type: "+ type);
-				System.out.println("dx: "+dx);
-				System.out.println("dy: "+dy);
-				generateWordCloud(type, dx, dy);
-				text = "![MyWordcloud](Output/customwordcloud.png)";
+				if(ctx.getChild(1).toString().equals("Circular") || ctx.getChild(1).toString().equals("Rectangle")) {
+					type = ctx.getChild(1).toString();
+					if(ctx.getChild(2) != null) {
+						dimension = ctx.getChild(2).toStringTree().toString();
+						dimension = dimension.substring(ctx.getChild(2).toStringTree().indexOf("]")+1);
+						System.out.println(dimension.substring(dimension.indexOf("[")+1).trim());
+						dx = Integer.parseInt(dimension.substring(dimension.indexOf("[")+1,dimension.indexOf("*")).trim());
+						dy = Integer.parseInt(dimension.substring(dimension.indexOf("*")+1,dimension.indexOf("]")).trim());
+					}
+					else {
+						System.out.println("No size given, will use standard size for the wordcloud");
+						dx = 450;
+						dy = 450;
+					}
+					System.out.println("Type: "+ type);
+					System.out.println("dx: "+dx);
+					System.out.println("dy: "+dy);
+					generateWordCloud(type, dx, dy);
+					text = "![MyWordcloud](Output/customwordcloud.png)";
+				}
+				else {
+					System.out.println("Wrong type of word cloud, must be either Circular or Rectangle");
+					return;
+				}
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
