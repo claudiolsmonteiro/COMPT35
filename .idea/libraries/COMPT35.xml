@@ -1,10 +1,10 @@
 <component name="libraryTable">
-  <library name="COMPT35">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/bibtex.zip!/" />
-      <root url="jar://$PROJECT_DIR$/antlr-4.5.2-complete.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
+	<library name="COMPT35">
+		<CLASSES>
+			<root url="jar://$PROJECT_DIR$/bibtex.zip!/" />
+			<root url="jar://$PROJECT_DIR$/antlr-4.5.2-complete.jar!/" />
+		</CLASSES>
+		<JAVADOC />
+		<SOURCES />
+	</library>
 </component>

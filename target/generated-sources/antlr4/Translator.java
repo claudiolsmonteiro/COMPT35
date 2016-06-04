@@ -5,24 +5,13 @@ import com.kennycason.kumo.CollisionMode;
 import com.kennycason.kumo.WordCloud;
 import com.kennycason.kumo.WordFrequency;
 import com.kennycason.kumo.bg.CircleBackground;
-import com.kennycason.kumo.bg.PixelBoundryBackground;
 import com.kennycason.kumo.bg.RectangleBackground;
-import com.kennycason.kumo.font.FontWeight;
-import com.kennycason.kumo.font.KumoFont;
 import com.kennycason.kumo.font.scale.LinearFontScalar;
-import com.kennycason.kumo.font.scale.SqrtFontScalar;
-import com.kennycason.kumo.image.AngleGenerator;
 import com.kennycason.kumo.nlp.FrequencyAnalyzer;
-import com.kennycason.kumo.nlp.tokenizer.ChineseWordTokenizer;
 import com.kennycason.kumo.palette.ColorPalette;
-import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 import java.util.List;
 
@@ -43,7 +32,6 @@ public class Translator extends MarkdownParserBaseListener
 
 	public boolean test_string(String teste)
 	{
-
 		int string_size = teste.length();
 		if(string_size < 2)
 			return false;
@@ -81,7 +69,6 @@ public class Translator extends MarkdownParserBaseListener
 	@Override
 	public void enterParagraph(MarkdownParser.ParagraphContext ctx)
 	{
-
 		String teste;
 		boolean error = false;
 		if(ctx.TEXT() != null)
@@ -109,10 +96,6 @@ public class Translator extends MarkdownParserBaseListener
 	@Override
 	public void enterStars(MarkdownParser.StarsContext ctx)
 	{
-		System.out.println("start " + ctx.getText());
-		System.out.println("start " + ctx.getStart());
-		System.out.println("stop " + ctx.getStop());
-		
 		String text = "";
 		if(ctx.REALNUMBERSELECTION() != null)
 			text += "There are " + ctx.REALNUMBERSELECTION().getText().charAt(1) + " filled stars.";
@@ -126,9 +109,6 @@ public class Translator extends MarkdownParserBaseListener
 	{
 		String type ="",dimension,text="";
 		int dx = 0, dy = 0;
-		System.out.println("start " + ctx.getText());
-		System.out.println("start " + ctx.getStart());
-		System.out.println("stop " + ctx.getStop());
 		try {
 			if(ctx.getText().equals("\\wordcloud")) {
 				simpleRectangleTest();
@@ -158,7 +138,7 @@ public class Translator extends MarkdownParserBaseListener
     	wordcloud_aux = new Wordcloud_aux();
     	
     	final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
-    	final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(wordcloud_aux.remove_chars(wordcloud_aux.readFile("./curriculo.txt")));
+    	final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(wordcloud_aux.remove_chars(Wordcloud_aux.readFile("./curriculo.txt")));
     	final Dimension dimension = new Dimension(600, 600);
     	final WordCloud wordCloud = new WordCloud(dimension, CollisionMode.RECTANGLE);
     	wordCloud.setPadding(0);
@@ -168,11 +148,12 @@ public class Translator extends MarkdownParserBaseListener
     	wordCloud.build(wordFrequencies);
     	wordCloud.writeToFile("Output/wordcloud.png");
     }
+    
     public void generateWordCloud(String type, int dx, int dy) throws IOException {
     	wordcloud_aux = new Wordcloud_aux();
     	final WordCloud wordCloud;
     	final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
-    	final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(wordcloud_aux.remove_chars(wordcloud_aux.readFile("./curriculo.txt")));
+    	final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(wordcloud_aux.remove_chars(Wordcloud_aux.readFile("./curriculo.txt")));
     	final Dimension dimension = new Dimension(dx, dx);
     	if(type.equals("Circular")) {
         	wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
@@ -225,10 +206,6 @@ public class Translator extends MarkdownParserBaseListener
 	@Override
 	public void enterSpaces(MarkdownParser.SpacesContext ctx)
 	{
-		System.out.println("start " + ctx.getText());
-		System.out.println("start " + ctx.getStart());
-		System.out.println("stop " + ctx.getStop());
-		
 		String text = "";
 		int numSpaces = 0;
 		String numSpacesText = ctx.WHOLENUMBERSELECTION().getText();

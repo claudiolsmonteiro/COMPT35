@@ -36,4 +36,4 @@ List de Gostos
 ![EstaImagemeUmPato](/C.NOmeuDisco.png)
 
 #WORDCLOUD
-![MyWordcloud](/C.wordcloud.png)
+![MyWordcloud](Output/wordcloud.png)

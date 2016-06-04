@@ -157,6 +157,16 @@ public interface MarkdownParserListener extends ParseTreeListener {
 	 */
 	void exitWordcloud(MarkdownParser.WordcloudContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MarkdownParser#dimension}.
+	 * @param ctx the parse tree
+	 */
+	void enterDimension(MarkdownParser.DimensionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MarkdownParser#dimension}.
+	 * @param ctx the parse tree
+	 */
+	void exitDimension(MarkdownParser.DimensionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MarkdownParser#spaces}.
 	 * @param ctx the parse tree
 	 */

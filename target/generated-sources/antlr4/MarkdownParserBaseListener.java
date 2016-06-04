@@ -195,6 +195,18 @@ public class MarkdownParserBaseListener implements MarkdownParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDimension(MarkdownParser.DimensionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDimension(MarkdownParser.DimensionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSpaces(MarkdownParser.SpacesContext ctx) { }
 	/**
 	 * {@inheritDoc}
