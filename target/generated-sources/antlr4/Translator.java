@@ -1,5 +1,6 @@
 //import com.sun.deploy.util.StringUtils;
 import org.antlr.v4.runtime.BufferedTokenStream;
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStreamRewriter;
 
 import com.kennycason.kumo.CollisionMode;
@@ -31,54 +32,100 @@ public class Translator extends MarkdownParserBaseListener
 		rewriter = new TokenStreamRewriter(tokens);
 	}
 
-	public boolean test_string(String teste)
+	public int test_string(String teste)
 	{
 		int string_size = teste.length();
 		if(string_size < 2)
-			return false;
+			return 0;
 		switch (teste.charAt(0)){
 			case '*':{
 				if( (teste.charAt(1) != '*') ||
-						(teste.charAt(string_size-1) != '*') ||
-						(teste.charAt(string_size-2) != '*')    )
-					return true;
+						(teste.charAt(string_size-2) != '*') ||
+						(teste.charAt(string_size-3) != '*')    )
+					return 1;
 				break;
 			}
 			case '~':{
 				if( (teste.charAt(1) != '~') ||
-						(teste.charAt(string_size-1) != '~') ||
-						(teste.charAt(string_size-2) != '~')    )
-					return true;
+						(teste.charAt(string_size-2) != '~') ||
+						(teste.charAt(string_size-3) != '~')    )
+					return 2;
 				break;
 			}
 			case '_':{
-				if(teste.charAt(string_size-1) != '_')
-					return true;
+				if(teste.charAt(string_size-2) != '_')
+					return 3;
 				break;
 			}
 			default: break;
 		}
 
-		return false;
+		return 0;
 
 	}
+	
+	public String addSpaces(String teste)
+	{
+		int string_size = teste.length();
+		if(string_size < 2)
+			return teste;
+		switch (teste.charAt(0)){
+			case '*':{
+				if( (teste.charAt(1) == '*') ||
+						(teste.charAt(string_size-1) == '*') ||
+						(teste.charAt(string_size-2) == '*')    )
+					teste = " " + teste + " ";
+				break;
+			}
+			case '~':{
+				if( (teste.charAt(1) == '~') ||
+						(teste.charAt(string_size-1) == '~') ||
+						(teste.charAt(string_size-2) == '~')    )
+					teste = " " + teste + " ";
+				break;
+			}
+			case '_':{
+				if(teste.charAt(string_size-1) == '_')
+					teste = " " + teste + " ";
+				break;
+			}
+			default: break;
+		}
+
+		return teste;
+	}
+
 
 	@Override
 	public void enterParagraph(MarkdownParser.ParagraphContext ctx)
 	{
-		String teste;
-		boolean error = false;
+		String teste ="";//subst="",output="";
+		int error = 0;
 		if(ctx.TEXT() != null){
 			int counter = ctx.getChildCount();
 			for(int i = 0; i<counter; i++){
 				teste = ctx.getChild(i).getText();
 				error = test_string(teste);
-				if(error){
+				//subst = addSpaces(teste);
+				if(error == 1){
 					System.out.println("Atention in iteration " + i);
-					System.out.println("Revise if you want BOLD, ITALIC or STRIKETHROUGH text! " + teste);
+					System.out.println("Revise if you want BOLD text! " + teste);
+					return;
+				}
+				else if( error == 2) {
+					System.out.println("Atention in iteration " + i);
+					System.out.println("Revise if you want STRIKETHROUGH text! " + teste);
+					return;
+				}
+				else if(error == 3) {
+					System.out.println("Atention in iteration " + i);
+					System.out.println("Revise if you want ITALIC text! " + teste);
+					return;
 				}
 			}
+			//rewriter.replace(ctx.getStart(), ctx.getStop(), output);
 		}
+		//rewriter.replace(ctx.getStart(), ctx.getStop(), output);
 	}
 	
 	public int parseStringColumn(String tableRow){
@@ -182,7 +229,6 @@ public class Translator extends MarkdownParserBaseListener
 					if(ctx.getChild(2) != null) {
 						dimension = ctx.getChild(2).toStringTree().toString();
 						dimension = dimension.substring(ctx.getChild(2).toStringTree().indexOf("]")+1);
-						System.out.println(dimension.substring(dimension.indexOf("[")+1).trim());
 						dx = Integer.parseInt(dimension.substring(dimension.indexOf("[")+1,dimension.indexOf("*")).trim());
 						dy = Integer.parseInt(dimension.substring(dimension.indexOf("*")+1,dimension.indexOf("]")).trim());
 					}
