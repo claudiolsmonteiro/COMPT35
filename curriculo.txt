@@ -6,7 +6,7 @@ Nationality **Portuguese**
 Citizen Card ID 13216754
 
 
-=====
+****
 #EDUCATIONZ
 
 
@@ -22,7 +22,7 @@ Citizen Card ID 13216754
 
 |Disciplina|Professor|Stars|
 |---:|---|:---|
-|LGP|\spaces[5]|\stars{4}[6]|
+|LGP|\spaces[5]|\stars{4.5}[6]|
 
 #Lista De linguagens
 1. Java

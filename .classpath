@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src" />
-	<classpathentry kind="src" path="target/generated-sources/antlr4" />
-	<classpathentry kind="con"
-		path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry kind="src" path="target/generated-sources/antlr4"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
-			<attribute name="owner.project.facets" value="java" />
+			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib"
-		path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/antlr-4.5.2-complete.jar" />
-	<classpathentry kind="output" path="build/classes" />
+	<classpathentry kind="lib" path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/lib/antlr-4.5.2-complete.jar"/>
+	<classpathentry kind="lib" path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/lib/apache-logging-log4j.jar"/>
+	<classpathentry kind="lib" path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/lib/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/lib/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/lib/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/lib/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/lib/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/lib/kumo-1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/lib/lambdaj-2.3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/lib/objenesis-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/lib/universal-document-converter-1.0.0.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
 </classpath>

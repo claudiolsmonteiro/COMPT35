@@ -1,39 +1,46 @@
 #PERSONAL INFORMATION
-_Name_Jose Nuno de Pinho Cardoso
+_Name_ Jose Nuno de Pinho Cardoso
 Date of Birth 27\-05\-1988
 Place of Birth Porto\\Portugal
-Nationality**Portuguese**
+Nationality **Portuguese** 
 Citizen Card ID 13216754
 
 
-=====
-#EDUCATION
-Escola superior do MIEIC
+****
+#EDUCATIONZ
+
+
+
+###Escola superior do MIEIC
+
 |Disciplina|Professor|Score|
 |---|---|---|
 |ASSO|LFR|a|
 |COMP|Luis RUi|17|
-Universidade
+
+##Universidade
+
 |Disciplina|Professor|Stars|
 |---:|---|:---|
-|LGP|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|There are 4 filled stars.There are 6 empty stars.|
-Excelente Aluno
+|LGP|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|![Filled Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/filled.png)![Filled Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/filled.png)![Filled Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/filled.png)![Filled Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/filled.png)![Filled Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/filled.png)![Half Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/half-star.png)![Empty Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/empty.png)![Empty Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/empty.png)![Empty Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/empty.png)![Empty Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/empty.png)![Empty Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/empty.png)![Empty Star](file:/C:/Users/david/OneDrive/Documentos/FEUP/3Ano/COMP/MCV/build/classes/empty.png)|
 
-#List De linguagens
-1.Java
-2.C
-3.Jade
-List de Gostos
--Web
--SQL
+#Lista De linguagens
+1. Java
+2. C
+3. Jade
+
+#Lista de Gostos
+- Web
+- SQL
 
 #QUOTES
 >Melhor empregado que ja tive
 >Sinceramente fantastico
+>Excelente Aluno
 
 #LINKS E IMAGENS
 [www\.google\.com]
 ![EstaImagemeUmPato](/C.NOmeuDisco.png)
 
 #WORDCLOUD
-![MyWordcloud](Output/wordcloud.png)
+![MyWordcloud](C:\Users\david\OneDrive\Documentos\FEUP\3Ano\COMP\MCV\Output\customwordcloud.png?raw=true)

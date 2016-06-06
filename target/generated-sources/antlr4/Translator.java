@@ -15,6 +15,8 @@ import com.kennycason.kumo.palette.ColorPalette;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.*;
 import java.util.List;
 
@@ -196,14 +198,49 @@ public class Translator extends MarkdownParserBaseListener
 	@Override
 	public void enterStars(MarkdownParser.StarsContext ctx)
 	{
+		URL filledStar = Main.class.getResource("/filled.png");
+		URL halfStar = Main.class.getResource("/half-star.png");
+		URL emptyStar = Main.class.getResource("/empty.png");
 		String text = "";
 		if(ctx.REALNUMBERSELECTION() != null)
-			for(int i = Character.getNumericValue(ctx.REALNUMBERSELECTION().getText().charAt(1)); i > 0; i--) {
-				text += ":star:";
+		{
+			Float numFilledStars = 0f;
+			float decimalPart = 0;
+			String filledStarsText = ctx.REALNUMBERSELECTION().getText();
+			filledStarsText = filledStarsText.replace("{", "");
+			filledStarsText = filledStarsText.replace("}", "");
+			try {
+				numFilledStars = Float.parseFloat(filledStarsText);
+				decimalPart = numFilledStars % 1;
 			}
-		text += " ";
-		//if(ctx.WHOLENUMBERSELECTION() != null)
-		//	text += "There are " + ctx.WHOLENUMBERSELECTION().getText().charAt(1) + " empty stars.";
+			catch (NumberFormatException nfe) {
+				
+			}
+			for(int i = 0; i < numFilledStars; i++)
+				text += "![Filled Star](" + filledStar + ")";
+			if(decimalPart == 0.5)
+				text += "![Half Star](" + halfStar + ")";
+			else
+			{
+				
+			}
+		}
+		if(ctx.WHOLENUMBERSELECTION() != null)
+		{
+			int numEmptyStars = 0;
+			String emptyStarsText = ctx.WHOLENUMBERSELECTION().getText();
+			emptyStarsText = emptyStarsText.replace("[", "");
+			emptyStarsText = emptyStarsText.replace("]", "");
+			try {
+				numEmptyStars = Integer.parseUnsignedInt(emptyStarsText);
+			}
+			catch (NumberFormatException nfe) {
+				
+			}
+
+			for(int i = 0; i < numEmptyStars; i++)
+				text += "![Empty Star](" + emptyStar + ")";
+		}
 		rewriter.replace(ctx.getStart(), ctx.getStop(), text);
 	}
 	
@@ -213,9 +250,11 @@ public class Translator extends MarkdownParserBaseListener
 		int dx = 0, dy = 0;
 		try {
 			if(ctx.getText().equals("\\wordcloud")) {
+				File f = new File("Output/wordcloud.png");
+				if (f.getParentFile() != null)
+					f.getParentFile().mkdirs();
 				simpleRectangleTest();
 				//text = "![MyWordcloud](Output/wordcloud.png)";
-				File f = new File("Output/wordcloud.png");
 				text = "![MyWordcloud]("+f.getAbsolutePath()+"?raw=true)";
 			}
 			else {
@@ -233,11 +272,10 @@ public class Translator extends MarkdownParserBaseListener
 						dx = 450;
 						dy = 450;
 					}
-					System.out.println("Type: "+ type);
-					System.out.println("dx: "+dx);
-					System.out.println("dy: "+dy);
-					generateWordCloud(type, dx, dy);
 					File f = new File("Output/customwordcloud.png");
+					if (f.getParentFile() != null)
+						f.getParentFile().mkdirs();
+					generateWordCloud(type, dx, dy);
 					text = "![MyWordcloud]("+f.getAbsolutePath()+"?raw=true)";
 				}
 				else {
