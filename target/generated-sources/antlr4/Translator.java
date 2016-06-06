@@ -110,16 +110,19 @@ public class Translator extends MarkdownParserBaseListener
 				if(error == 1){
 					System.out.println("Atention in iteration " + i);
 					System.out.println("Revise if you want BOLD text! " + teste);
+					System.out.println("Line: " + ctx.start.getLine() + 1);
 					return;
 				}
 				else if( error == 2) {
 					System.out.println("Atention in iteration " + i);
 					System.out.println("Revise if you want STRIKETHROUGH text! " + teste);
+					System.out.println("Line: " + ctx.start.getLine() + 1);
 					return;
 				}
 				else if(error == 3) {
 					System.out.println("Atention in iteration " + i);
 					System.out.println("Revise if you want ITALIC text! " + teste);
+					System.out.println("Line: " + ctx.start.getLine() + 1);
 					return;
 				}
 			}
@@ -151,11 +154,13 @@ public class Translator extends MarkdownParserBaseListener
 			}
 
 			if(parseStringColumn(ctx.getChild(i).getText()) > size){
-				System.out.println("Wrong size in columns!!");
+				System.out.println("Wrong column size.");
+				System.out.println("Line: " + ctx.start.getLine() + 1);
 				System.exit(3);
 			}
 			if(i == 2 && parseStringColumn(ctx.getChild(i).getText()) >= size){
-				System.out.println("Wrong size in column |---| separations!");
+				System.out.println("Wrong column size.");
+				System.out.println("Line: " + ctx.start.getLine() + 1);
 				System.exit(3);
 			}
 		}
@@ -177,21 +182,11 @@ public class Translator extends MarkdownParserBaseListener
 						counter_check++;
 					}
 					else{
-						System.out.println("Your ordered list(s) structure is wrong! - check(1,2,3,...)");
+						System.out.println("Wrong ordered list.");
+						System.out.println("Line: " + ctx.start.getLine() + 1);
 						System.exit(2);
 					}
-					/***NAO DA ASSIM MAS EStA QUASE!!***/
-					/*
-					if(Character.digit(ctx.getChild(i).getText().charAt(0), 10) == counter_check) {
-						counter++;
-						System.out.println("Is digit:  " + ctx.getChild(i).getText().charAt(0));
-						counter_check++;
-						//count_check=(char)counter_check;
-					}
-					else{
-						System.out.println("Your order list structure is wrong! - check(1,2,3,...)");
-					}
-					*/
+					
 				}
 			}
 		}
@@ -234,6 +229,7 @@ public class Translator extends MarkdownParserBaseListener
 					}
 					else {
 						System.out.println("No size given, will use standard size for the wordcloud");
+						System.out.println("Line: " + ctx.start.getLine() + 1);
 						dx = 450;
 						dy = 450;
 					}
@@ -246,6 +242,7 @@ public class Translator extends MarkdownParserBaseListener
 				}
 				else {
 					System.out.println("Wrong type of word cloud, must be either Circular or Rectangle");
+					System.out.println("Line: " + ctx.start.getLine() + 1);
 					return;
 				}
 			}
